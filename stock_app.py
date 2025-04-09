@@ -10,7 +10,6 @@ import plotly.graph_objs as go
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
-import cv2
 
 model_ai = ResNet50(weights='imagenet')
 
