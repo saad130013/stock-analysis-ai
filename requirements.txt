@@ -7,3 +7,4 @@ plotly
 matplotlib
 tensorflow
 opencv-python
+numpy==1.23.5
