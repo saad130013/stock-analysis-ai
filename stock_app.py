@@ -74,7 +74,10 @@ def analyze_stock(name, symbol):
         data["MACD"] = np.nan
         data["MACD_signal"] = np.nan
     data["MFI"] = ta.mfi(data["High"], data["Low"], data["Close"], data["Volume"])
-    data["OBV"] = ta.obv(data["Close"], data["Volume"])
+    if "Close" in data.columns and "Volume" in data.columns and not data["Close"].isnull().any():
+        data["OBV"] = ta.obv(data["Close"], data["Volume"])
+    else:
+        data["OBV"] = np.nan
     data["SMA_50"] = ta.sma(data["Close"], length=50)
     data["SMA_200"] = ta.sma(data["Close"], length=200)
 
