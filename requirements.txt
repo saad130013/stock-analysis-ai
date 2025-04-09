@@ -1,10 +1,9 @@
 streamlit
 yfinance
 pandas
-pandas_ta==0.3.14b0
+pandas_ta
 prophet
 plotly
 matplotlib
 tensorflow
-opencv-python
-numpy==1.23.5
+scikit-learn
