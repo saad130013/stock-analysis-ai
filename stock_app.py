@@ -67,8 +67,12 @@ def analyze_stock(name, symbol):
     data.dropna(inplace=True)
     data["RSI"] = ta.rsi(data["Close"], length=14)
     macd_data = ta.macd(data["Close"])
-    data["MACD"] = macd_data.iloc[:, 0]
-    data["MACD_signal"] = macd_data.iloc[:, 1]
+    if macd_data is not None and not macd_data.empty:
+        data["MACD"] = macd_data.iloc[:, 0]
+        data["MACD_signal"] = macd_data.iloc[:, 1]
+    else:
+        data["MACD"] = np.nan
+        data["MACD_signal"] = np.nan
     data["MFI"] = ta.mfi(data["High"], data["Low"], data["Close"], data["Volume"])
     data["OBV"] = ta.obv(data["Close"], data["Volume"])
     data["SMA_50"] = ta.sma(data["Close"], length=50)
